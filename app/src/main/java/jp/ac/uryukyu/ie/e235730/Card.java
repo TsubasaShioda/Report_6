@@ -13,7 +13,7 @@ public class Card {
         return color;
     }
 
-    public String getValue() {
+    public String getNumber() {
         return number;
     }
 
