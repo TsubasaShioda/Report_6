@@ -15,5 +15,11 @@ public class Deck {
                 }
             }
     }
+    public Card drawCard() {
+        if (cards.isEmpty()) {
+            return null;  
+        }
+        return cards.remove(cards.size() - 1);
+    }
     
 }
