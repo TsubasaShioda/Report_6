@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Player {
     private String name;        
-    private List<Card> hand;     
+    private List<Card> hand;   
+    private List<Card> playedCards;  
     
     public Player(String name, List<Card> hand) {
         this.name = name;
@@ -17,7 +18,11 @@ public class Player {
             }
         }
         
-        public Card playCard(int index) {
+        public void playCard(Card card) {
+            playedCards.add(card);
+        }
+
+        public Card moveCard(int index) {
             return hand.remove(index);
         }
         
