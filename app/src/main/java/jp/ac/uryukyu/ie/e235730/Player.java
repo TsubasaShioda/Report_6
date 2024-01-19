@@ -11,6 +11,19 @@ public class Player {
         this.name = name;
         this.hand = hand;
     }
+        public String getName() {
+        return name;
+        }
+        public List<Card> getHand() {
+            return hand;
+        }
+        public List<Card> getPlayedCards() {
+            return playedCards;
+        }
+        public int getNumCardsInHand() {
+            return hand.size();
+        }
+
         public void displayHand() {
             System.out.println(name + "さんの手札：");
             for (Card card : hand) {
@@ -29,8 +42,13 @@ public class Player {
         public void drawCard(Card card) {
             hand.add(card);
         }
-        
-        public int getNumCardsInHand() {
-            return hand.size();
+        public boolean canPlay(Card card) {
+            for (Card c : hand) {
+                if (c.getColor().equals(card.getColor()) || c.getNumber().equals(card.getNumber())) {
+                    return true;
+                }
+            }
+            return false;
         }
+        
     }
