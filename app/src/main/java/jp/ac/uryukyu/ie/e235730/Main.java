@@ -2,6 +2,7 @@ package jp.ac.uryukyu.ie.e235730;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,6 +35,38 @@ public class Main {
         CPU1.displayHand();
         CPU2.displayHand();
         CPU3.displayHand();
+        Scanner scanner = new Scanner(System.in);
 
+        Card currentCard = deck.drawCard();
+
+        while (true) {
+            player.displayHand();
+            System.out.println("現在のカード：色：" + currentCard.getColor() + "  数字：" + currentCard.getNumber());
+
+            boolean validPlay = false;
+            while (!validPlay) {
+                System.out.println("プレイするカードの番号を入力してください（0から" + (player.getNumCardsInHand() - 1) + "）:");
+                int cardIndex = scanner.nextInt();
+
+                Card selectedCard = player.moveCard(cardIndex);
+
+                if (selectedCard.getColor().equals(currentCard.getColor())
+                        || selectedCard.getNumber().equals(currentCard.getNumber())) {
+                    validPlay = true;
+                    currentCard = selectedCard;
+                    player.playCard(selectedCard);
+                } else {
+                    System.out.println("選択したカードはプレイできません。別のカードを選択してください。");
+                    player.drawCard(selectedCard);
+                }
+            }
+            
+            if (player.getHand().isEmpty()) {
+                System.out.println("プレイヤーの勝ち！");
+                break;
+            }
+        }
+        scanner.close();
     }
+
 }

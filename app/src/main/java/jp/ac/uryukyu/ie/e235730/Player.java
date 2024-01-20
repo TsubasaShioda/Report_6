@@ -1,5 +1,6 @@
 package jp.ac.uryukyu.ie.e235730;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -10,6 +11,7 @@ public class Player {
     public Player(String name, List<Card> hand) {
         this.name = name;
         this.hand = hand;
+        this.playedCards = new ArrayList<>();
     }
         public String getName() {
         return name;
