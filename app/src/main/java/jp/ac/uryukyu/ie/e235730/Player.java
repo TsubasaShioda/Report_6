@@ -44,13 +44,5 @@ public class Player {
         public void drawCard(Card card) {
             hand.add(card);
         }
-        public boolean canPlay(Card card) {
-            for (Card c : hand) {
-                if (c.getColor().equals(card.getColor()) || c.getNumber().equals(card.getNumber())) {
-                    return true;
-                }
-            }
-            return false;
-        }
         
     }
