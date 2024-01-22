@@ -63,10 +63,13 @@ public class Main {
                     currentCard = selectedCard;
                     currentPlayer.playCard(selectedCard);
                     System.out.println(currentPlayer.getName() + "は 色：" + currentCard.getColor() + "  数字：" + currentCard.getNumber() + "を出した！");
+                    System.out.println(currentPlayer.getName() + "残り" + (currentPlayer.getNumCardsInHand() ) + "枚");
                 } else {
                     currentPlayer.drawCard(selectedCard);
                     System.out.println(currentPlayer.getName() + "はパスした");
                     currentPlayer.getHand().add(deck.drawCard());
+                    System.out.println(currentPlayer.getName() + "残り" + currentPlayer.getNumCardsInHand() + "枚");
+                    validPlay = true;
                 }
             } else {
                 while (!validPlay) {
@@ -81,11 +84,13 @@ public class Main {
                             || selectedCard.getNumber().equals(currentCard.getNumber())) {
                         validPlay = true;
                         currentCard = selectedCard;
+                        System.out.println(currentPlayer.getName() + "は 色：" + currentCard.getColor() + "  数字：" + currentCard.getNumber() + "を出した！");
                         currentPlayer.playCard(selectedCard);
                     } else {
                         System.out.println("選択したカードはプレイできません。別のカードを選択してください。");
                         currentPlayer.drawCard(selectedCard);
                         hand.add(deck.drawCard());
+                        System.out.println(currentPlayer.getName() + "はパスした");
                         validPlay = true;
                     }
                 }
