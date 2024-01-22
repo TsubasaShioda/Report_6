@@ -1,12 +1,12 @@
 package jp.ac.uryukyu.ie.e235730;
 
 public class Card {
-    private String color;
-    private String number;
+    private String color; //色
+    private String number; //数字
 
     public Card(String color, String number){
         this.color=color;
-        this.number=number;
+        this.number=number; 
     }
 
     public String getColor() {

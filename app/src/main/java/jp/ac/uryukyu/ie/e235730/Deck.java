@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Deck {
-    private List<Card> cards; 
+    private List<Card> cards;  //カードリスト
     
-    public Deck() {
+    public Deck() {  //カード生成
         cards = new ArrayList<>();
         for (int i=0; i<7; i++)
             for (String color : new String[]{"red", "blue", "yellow", "green"}) {
@@ -16,14 +16,14 @@ public class Deck {
                 }
             }
     }
-    public Card drawCard() {
+    public Card drawCard() {  //デッキから1枚のカードを返す
         if (cards.isEmpty()) {
             return null;  
         }
         return cards.remove(cards.size() - 1);
     }
     
-    public void shuffle() {
+    public void shuffle() {  //デッキのカードをシャッフルする
         Random rand = new Random();
         for (int i = 0; i < cards.size(); i++) {
             int j = rand.nextInt(cards.size());
