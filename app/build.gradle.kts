@@ -10,6 +10,14 @@ plugins {
     application
 }
 
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
+}
+
+java {                                      
+    sourceCompatibility = JavaVersion.VERSION_17
+}
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
@@ -34,10 +42,16 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass.set("jp.ac.uryukyu.ie.e235730.App")
+    mainClass.set("Main")
 }
 
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "Main"
+    }
 }
